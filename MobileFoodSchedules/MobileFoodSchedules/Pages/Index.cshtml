@@ -1,0 +1,47 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+    var mobileFoodPermits = (QuickType.MobileFoodPermit[])ViewData["MobileFoodPermits"];
+    var mobileFoodSchedules = (QuickTypee.MobileFoodSchedule[])ViewData["MobileFoodSchedules"];
+
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Applicant</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (QuickType.MobileFoodPermit mobileFoodPermit in mobileFoodPermits)
+        {
+        <tr>
+            <td>@mobileFoodPermit.Applicant</td>
+            <td>@mobileFoodPermit.Status</td>
+        </tr>
+        }
+    </tbody>
+</table>
+<table>
+    <thead>
+        <tr>
+            <th>Dayorder</th>
+            <th>Day</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (QuickTypee.MobileFoodSchedule mobileFoodSchedule in mobileFoodSchedules)
+        {
+            <tr>
+                <td>@mobileFoodSchedule.Dayorder</td>
+                <td>@mobileFoodSchedule.Dayofweekstr</td>
+            </tr>
+        }
+    </tbody>
+</table>
