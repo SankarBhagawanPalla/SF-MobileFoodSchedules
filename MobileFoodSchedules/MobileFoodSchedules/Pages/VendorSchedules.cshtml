@@ -1,0 +1,95 @@
+﻿@page
+@model MobileFoodSchedules.Pages.VendorSearchModel
+@{
+    ViewData["Title"] = "VendorSearch";
+}
+
+<h1>VendorSearch</h1>
+<div id="app">
+    <form v-on:submit.stop.prevent="searchVendor">
+        <div class="form-group">
+            <label for="name">Vendor Name</label>
+            <input list="vendors" class="form-control" id="name" placeholder="Name" v-model="name" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Search Vendor" class="btn btn-primary" />
+        </div>
+    </form>
+    <datalist id="vendors">
+        <option v-for="vendor in vendorsList"> {{ vendor }} </option>
+    </datalist>
+    <br />
+    <div v-if="showDetails">
+        <p><strong>Food schedule of {{ nameToShow }}</strong></p>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Day of Week</th>
+                    <th>Start Time</th>
+                    <th>Close Time</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="vendorDetail in sortFunc(vendorDetails)">
+                    <td> {{ vendorDetail.dayOfWeek }}</td>
+                    <td> {{ vendorDetail.startTime }}</td>
+                    <td> {{ vendorDetail.endtime }}</td>
+                    <td> {{ vendorDetail.location }}</td>
+                    <td> {{ vendorDetails.length }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>    
+</div>
+
+
+
+@section scripts  {
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                name: "",
+                nameToShow: "",
+                vendorsList: [],
+                vendorDetails: [],
+                showDetails: false
+            },
+            mounted: function () {
+                var self = this;
+                $.get('https://data.sfgov.org/resource/jjew-r69b.json', function (data) {
+                    var vendorString = new Set();
+                    for (var i = 0; i < data.length; i++) {
+                        vendorString.add(data[i].applicant);
+                    }
+                    self.vendorsList = vendorString;
+                })
+            },
+            methods: {
+                searchVendor: function () {
+                    var self = this;
+                    self.nameToShow = self.name;                    
+                    $.get('https://data.sfgov.org/resource/jjew-r69b.json?applicant=' + self.name, function (data) {
+                        console.log('dataa-->' + data);
+                        self.vendorDetails = [];
+                        for (var i = 0; i < data.length; i++) {
+                            self.vendorDetails.push({ dayOfWeek: data[i].dayofweekstr, startTime: data[i].starttime, endtime: data[i].endtime, location: data[i].location });
+                        }
+                    })
+                    self.showDetails = true;
+                    self.name = "";
+                    console.log('dtatailsLen-->' + self.vendorDetails.length);
+                },
+                sortFunc: function () {
+                    return this.vendorDetails.slice().sort(function (a, b) {
+                        return (a.location > b.location) ? 1 : -1;
+                    });
+                }
+            }
+        })
+    </script>
+}
+
+
+
