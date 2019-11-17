@@ -7,43 +7,39 @@
 
 }
 
+<style>
+    body {
+        background-color: #f2f2f2;
+    }
+</style>
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <h2>Under Development!!</h2>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 style="font-size:60px;text-align:center;font-family:Times New Roman;">Mobile Food Services</h1>
+    <center><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmMpDNspu1ndon2EuYWvnFws2A6K8NnxRgjYcPULbQIdxGaBYezQ&s" height="500" width="80%"></center>
+    <br />
+    <h2 style="font-size:30px;text-align:center;">Do you have craving for food? Then you are right place to explore!</h2>
+    <p align="justify" style="font-size:23px;">
+        A Mobile Food Facility is any vehicle or pushcart used in conjunction with a commissary or other permanent food facility 
+        upon which food is sold or distributed at retail in a static location. Department of Public Health and San Francisco Fire
+        Department continues to enforce public safety regulations, while location permitting was transferred from the Police 
+        Department to Public Works.
+    </p>
+    <p align="justify" style="font-size:23px;">
+        Like many major cities across the country, mobile food facilities have become an increasingly significant feature of the 
+        streetscape in San Francisco. In order to address this growing trend, the Board of Supervisors adopted ordinance 
+        119-13 (Public Works Code, Article 5.8), regulating Mobile Food Facilities in December of 2010, followed by Public
+        Works guidelines (Public Works Order No. 179,044), approved February 25, 2011.
+    </p>
+    <p align="justify" style="font-size:23px;">
+        On July 28, 2013, the Board of Supervisors amended Public Works Code, Article 5.8 to address various location and noticing 
+        requirements concerning mobile food facilities accompanied by Public Works guidelines (Order 182,101). The new legislation 
+        streamlines the rules and regulations for mobile food vending, making it assessable and affordable to be a legal street-food 
+        vendor in San Francisco.
+    </p>
 </div>
-<p>Raghuveer added this line to test changes</p>
-<table>
-    <thead>
-        <tr>
-            <th>Applicant</th>
-            <th>Status</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (QuickType.MobileFoodPermit mobileFoodPermit in mobileFoodPermits)
-        {
-        <tr>
-            <td>@mobileFoodPermit.Applicant</td>
-            <td>@mobileFoodPermit.Status</td>
-        </tr>
-        }
-    </tbody>
-</table>
-<table>
-    <thead>
-        <tr>
-            <th>Dayorder</th>
-            <th>Day</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (QuickTypee.MobileFoodSchedule mobileFoodSchedule in mobileFoodSchedules)
-        {
-            <tr>
-                <td>@mobileFoodSchedule.Dayorder</td>
-                <td>@mobileFoodSchedule.Dayofweekstr</td>
-            </tr>
-        }
-    </tbody>
-</table>
+
+
+
+
+
+
