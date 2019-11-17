@@ -4,11 +4,11 @@
     ViewData["Title"] = "VendorSearch";
 }
 
-<h1>VendorSearch</h1>
+<h1>Search Schedules for a Vendor</h1>
 <div id="app">
     <form v-on:submit.stop.prevent="searchVendor">
         <div class="form-group">
-            <label for="name">Vendor Name</label>
+            <label for="name"><strong>Vendor Name</strong></label>
             <input list="vendors" class="form-control" id="name" placeholder="Name" v-model="name" />
         </div>
         <div class="form-group">
