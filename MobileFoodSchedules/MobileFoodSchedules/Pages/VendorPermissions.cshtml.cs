@@ -16,15 +16,26 @@ namespace MobileFoodSchedules.Pages
         {
             using (var webClient = new WebClient())
             {
-                String permitjsonString = webClient.DownloadString("https://data.sfgov.org/resource/rqzj-sfat.json");
+                String permitjsonString = GetData("https://data.sfgov.org/resource/rqzj-sfat.json");
                 var mobileFoodPermits = MobileFoodPermit.FromJson(permitjsonString);
                 ViewData["MobileFoodPermits"] = mobileFoodPermits;
 
 
-                String schedulesjsonnString = webClient.DownloadString("https://data.sfgov.org/resource/jjew-r69b.json");
+                String schedulesjsonnString = GetData("https://data.sfgov.org/resource/jjew-r69b.json");
                 var mobileFoodSchedules = MobileFoodSchedule.FromJson(schedulesjsonnString);
                 ViewData["MobileFoodSchedules"] = mobileFoodSchedules;
             }
         }
+        
+    public string GetData(string endpoint)
+        {
+            string downloadedData = "";
+            using (WebClient webClient = new WebClient())
+            {
+                downloadedData = webClient.DownloadString(endpoint);
+            }
+            return downloadedData;
+        }
+
     }
 }
