@@ -39,8 +39,22 @@ namespace MobileFoodSchedules.Pages
 
 
                 String schedulesjsonnString = GetData("https://data.sfgov.org/resource/jjew-r69b.json");
-                var mobileFoodSchedules = MobileFoodSchedule.FromJson(schedulesjsonnString);
-                ViewData["MobileFoodSchedules"] = mobileFoodSchedules;
+                JSchema schema1 = JSchema.Parse(System.IO.File.ReadAllText("MobileFoodSchedule1.json"));
+                JArray jsonArray1 = JArray.Parse(permitjsonString);
+                IList<string> validationEvents1 = new List<string>();
+                if (jsonArray.IsValid(schema1))
+                {
+                    var mobileFoodSchedules = MobileFoodSchedule.FromJson(schedulesjsonnString);
+                    ViewData["MobileFoodSchedules"] = mobileFoodSchedules;
+                }
+                else
+                {
+                    foreach (string evt1 in validationEvents1)
+                    {
+                        Console.WriteLine(evt1);
+                    }
+                    ViewData["MobileFoodPermits"] = new List<MobileFoodPermit>();
+                }
             }
         }
         
