@@ -5,8 +5,8 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using QuickType;
-using QuickTypee;
+using FoodSchedules;
+using FoodPermits;
 
 namespace MobileFoodSchedules.Pages
 {
