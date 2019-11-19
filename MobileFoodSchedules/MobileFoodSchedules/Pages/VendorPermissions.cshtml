@@ -13,20 +13,22 @@
     <h2>Under Development!!</h2>
 </div>
 
-<table class="table table-striped table-hover">
-    <thead class="thead-dark">
-        <tr>
-            <th>Applicant</th>
-            <th>Status</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (QuickType.MobileFoodPermit mobileFoodPermit in mobileFoodPermits)
-        {
+<div>
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
             <tr>
-                <td>@mobileFoodPermit.Applicant</td>
-                <td>@mobileFoodPermit.Status</td>
+                <th>Applicant</th>
+                <th>Status</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (QuickType.MobileFoodPermit mobileFoodPermit in mobileFoodPermits)
+            {
+                <tr>
+                    <td>@mobileFoodPermit.Applicant</td>
+                    <td>@mobileFoodPermit.Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
