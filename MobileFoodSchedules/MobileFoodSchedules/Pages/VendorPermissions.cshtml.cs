@@ -5,8 +5,8 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using QuickType;
-using QuickTypee;
+using FoodPermits;
+using FoodSchedules;
 
 namespace MobileFoodSchedules.Pages
 {
@@ -16,13 +16,14 @@ namespace MobileFoodSchedules.Pages
         {
             using (var webClient = new WebClient())
             {
+                //Reading the Mobile Food Permits JSON Data
                 String permitjsonString = webClient.DownloadString("https://data.sfgov.org/resource/rqzj-sfat.json");
                 var mobileFoodPermits = MobileFoodPermit.FromJson(permitjsonString);
                 ViewData["MobileFoodPermits"] = mobileFoodPermits;
 
-
-                String schedulesjsonnString = webClient.DownloadString("https://data.sfgov.org/resource/jjew-r69b.json");
-                var mobileFoodSchedules = MobileFoodSchedule.FromJson(schedulesjsonnString);
+                //Reading the Mobile Food Schedules JSON Data
+                String schedulesjsonString = webClient.DownloadString("https://data.sfgov.org/resource/jjew-r69b.json");
+                var mobileFoodSchedules = MobileFoodSchedule.FromJson(schedulesjsonString);
                 ViewData["MobileFoodSchedules"] = mobileFoodSchedules;
             }
         }
