@@ -2,8 +2,8 @@
 @model MobileFoodSchedules.Pages.VendorPermissionsModel
 @{
     ViewData["Title"] = "VendorPermissions";
-    var mobileFoodPermits = (QuickType.MobileFoodPermit[])ViewData["MobileFoodPermits"];
-    var mobileFoodSchedules = (QuickTypee.MobileFoodSchedule[])ViewData["MobileFoodSchedules"];
+    var mobileFoodPermits = (Permits.MobileFoodPermit[])ViewData["MobileFoodPermits"];
+    var mobileFoodSchedules = (Schedules.MobileFoodSchedule[])ViewData["MobileFoodSchedules"];
 }
 
 <h1>Vendor Permissions</h1>
@@ -21,7 +21,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (QuickType.MobileFoodPermit mobileFoodPermit in mobileFoodPermits)
+        @foreach (Permits.MobileFoodPermit mobileFoodPermit in mobileFoodPermits)
         {
             <tr>
                 <td>@mobileFoodPermit.Applicant</td>
