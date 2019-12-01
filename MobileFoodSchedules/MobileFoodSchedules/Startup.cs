@@ -35,6 +35,9 @@ namespace MobileFoodSchedules
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            services.AddDbContext<MobileFoodSchedulesContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("MobileFoodSchedulesContext")));
+
             
         }
 
