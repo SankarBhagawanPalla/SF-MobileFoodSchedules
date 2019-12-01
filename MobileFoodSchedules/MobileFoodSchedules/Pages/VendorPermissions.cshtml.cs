@@ -15,9 +15,9 @@ namespace MobileFoodSchedules.Pages
         public bool vendorSearch { get; set; }
         [BindProperty]
         public string Search { get; set; }
-        public QuickType.MobileFoodPermit[] mobileFoodPermits;
-        public QuickType.MobileFoodPermit[] mobileFoodPermitsSearch;
-        public IEnumerable<QuickTypee.MobileFoodSchedule> mobileFoodSchedules { get; set; }
+        public MobileFoodPermit[] mobileFoodPermits;
+        public MobileFoodPermit[] mobileFoodPermitsSearch;
+        public IEnumerable<Schedules.MobileFoodSchedule> mobileFoodSchedules { get; set; }
 
         public VendorPermissionsModel()
         {
@@ -40,7 +40,7 @@ namespace MobileFoodSchedules.Pages
             HashSet<string> vendorNames = new HashSet<string>();
 
             vendorSearch = false;
-            foreach (QuickType.MobileFoodPermit permit in mobileFoodPermits)
+            foreach (Permits.MobileFoodPermit permit in mobileFoodPermits)
             {
                 vendorNames.Add(permit.Applicant);
             }
@@ -57,7 +57,7 @@ namespace MobileFoodSchedules.Pages
                 return;
             }
             HashSet<string> vendorNames = new HashSet<string>();
-            foreach (QuickType.MobileFoodPermit permit in mobileFoodPermits)
+            foreach (Permits.MobileFoodPermit permit in mobileFoodPermits)
             {
                 vendorNames.Add(permit.Applicant);
             }

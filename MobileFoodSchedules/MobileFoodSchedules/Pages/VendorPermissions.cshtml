@@ -3,12 +3,9 @@
 @{
     ViewData["Title"] = "VendorPermissions";
 
+    var vendorNames = ViewData["VendorNames"];
     var mobileFoodPermits = (Permits.MobileFoodPermit[])ViewData["MobileFoodPermits"];
     var mobileFoodSchedules = (Schedules.MobileFoodSchedule[])ViewData["MobileFoodSchedules"];
-
-    var vendorNames = ViewData["VendorNames"];
-    var mobileFoodPermits = (QuickType.MobileFoodPermit[])ViewData["MobileFoodPermits"];
-    var mobileFoodSchedules = (QuickTypee.MobileFoodSchedule[])ViewData["MobileFoodSchedules"];
 
 }
 
@@ -19,21 +16,10 @@
     <h2>Under Development!!</h2>
 </div>
 
-
-<table class="table table-striped table-hover">
-    <thead class="thead-dark">
-        <tr>
-            <th>Applicant</th>
-            <th>Status</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (Permits.MobileFoodPermit mobileFoodPermit in mobileFoodPermits)
-
 <form action="" method="POST" style="margin-top: 50px;">
     <div class="form-group">
         <label style="font-size:20px;" class="control-label" for="search"><strong>Vendor</strong></label>
-        <input list="vendors" class="form-control" name="search" id="search" style="width:50%"/>
+        <input list="vendors" class="form-control" name="search" id="search" style="width:50%" />
     </div>
     <div class="form-group">
         <input type="submit" value="Search Vendor" class="btn btn-primary" />
