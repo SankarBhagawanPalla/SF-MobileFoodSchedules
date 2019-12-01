@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,93 +15,39 @@ namespace MobileFoodSchedules.Controller
     [ApiController]
     public class FoodSurveysController : ControllerBase
     {
-        private readonly MobileFoodSchedulesContext _context;
-
-        public FoodSurveysController(MobileFoodSchedulesContext context)
+        private readonly IHostingEnvironment _environment;
+        public FoodSurveysController(IHostingEnvironment environment)
         {
-            _context = context;
+            _environment = environment;
         }
 
         // GET: api/FoodSurveys
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<FoodSurvey>>> GetFoodSurvey()
+        public ActionResult<IEnumerable<FoodSurvey>> GetFoodSurvey()
         {
-            return await _context.FoodSurvey.ToListAsync();
-        }
-
-        // GET: api/FoodSurveys/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<FoodSurvey>> GetFoodSurvey(int id)
-        {
-            var foodSurvey = await _context.FoodSurvey.FindAsync(id);
-
-            if (foodSurvey == null)
+            List<FoodSurvey> FoodSurvey = new List<FoodSurvey>();
+            string line;
+            string path = Path.Combine(_environment.ContentRootPath, "FoodSurveys.txt");
+            StreamReader file = new System.IO.StreamReader(path);
+            while ((line = file.ReadLine()) != null)
             {
-                return NotFound();
+                string[] data = line.Split(',');
+                FoodSurvey fs = new FoodSurvey();
+                fs.firstName = data[0];
+                fs.lastName = data[1];
+                fs.mobile = data[2];
+                fs.email = data[3];
+                fs.age = Int32.Parse(data[4]);
+                fs.favouriteDish = data[5];
+                fs.favouriteCuisine = data[6];
+                fs.homeCountry = data[7];
+
+                FoodSurvey.Add(fs);
             }
-
-            return foodSurvey;
-        }
-
-        // PUT: api/FoodSurveys/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutFoodSurvey(int id, FoodSurvey foodSurvey)
-        {
-            if (id != foodSurvey.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(foodSurvey).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!FoodSurveyExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/FoodSurveys
-        [HttpPost]
-        public async Task<ActionResult<FoodSurvey>> PostFoodSurvey(FoodSurvey foodSurvey)
-        {
-            _context.FoodSurvey.Add(foodSurvey);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetFoodSurvey", new { id = foodSurvey.Id }, foodSurvey);
-        }
-
-        // DELETE: api/FoodSurveys/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<FoodSurvey>> DeleteFoodSurvey(int id)
-        {
-            var foodSurvey = await _context.FoodSurvey.FindAsync(id);
-            if (foodSurvey == null)
-            {
-                return NotFound();
-            }
-
-            _context.FoodSurvey.Remove(foodSurvey);
-            await _context.SaveChangesAsync();
-
-            return foodSurvey;
-        }
-
-        private bool FoodSurveyExists(int id)
-        {
-            return _context.FoodSurvey.Any(e => e.Id == id);
+            file.Close();
+            return FoodSurvey;
         }
     }
 }
+
+ 
