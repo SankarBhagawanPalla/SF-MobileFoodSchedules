@@ -34,7 +34,9 @@ namespace MobileFoodSchedules.Pages.FoodSurveys
                 return Page();
             }
 
-            string survey = FoodSurvey.firstName + "," + FoodSurvey.lastName + "," + FoodSurvey.mobile + "," + FoodSurvey.email + "," + FoodSurvey.age + "," + FoodSurvey.favouriteDish + "," + FoodSurvey.favouriteCuisine + "," + FoodSurvey.homeCountry;
+            string survey = FoodSurvey.firstName + "," + FoodSurvey.lastName + "," + FoodSurvey.mobile + ","
+            + FoodSurvey.email + "," + FoodSurvey.age + "," + FoodSurvey.favouriteDish + "," + FoodSurvey.favouriteCuisine + 
+            "," + FoodSurvey.homeCountry;
             string path = Path.Combine(_environment.ContentRootPath, "FoodSurveys.txt");
             
             System.IO.File.AppendAllText(path, survey + Environment.NewLine);

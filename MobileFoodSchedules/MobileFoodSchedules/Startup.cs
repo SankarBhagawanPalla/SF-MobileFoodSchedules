@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using MobileFoodSchedules.Models;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace MobileFoodSchedules
 {
@@ -32,11 +29,13 @@ namespace MobileFoodSchedules
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "Food Survey API", Version = "v1" });
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddDbContext<MobileFoodSchedulesContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("MobileFoodSchedulesContext")));
 
             
         }
@@ -50,13 +49,20 @@ namespace MobileFoodSchedules
             }
             else
             {
-                app.UseExceptionHandler("/Error");
+                app.UseExceptionHandler("/Error");  
             }
+            app.UseSwagger();
 
+
+            app.UseMvc();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("./swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = string.Empty;
+            });
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            app.UseMvc();
         }
     }
 }

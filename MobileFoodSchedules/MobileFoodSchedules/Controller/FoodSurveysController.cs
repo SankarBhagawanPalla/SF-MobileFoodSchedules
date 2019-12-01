@@ -28,7 +28,7 @@ namespace MobileFoodSchedules.Controller
             List<FoodSurvey> FoodSurvey = new List<FoodSurvey>();
             string line;
             string path = Path.Combine(_environment.ContentRootPath, "FoodSurveys.txt");
-            StreamReader file = new System.IO.StreamReader(path);
+            StreamReader file = new StreamReader(path);
             while ((line = file.ReadLine()) != null)
             {
                 string[] data = line.Split(',');
