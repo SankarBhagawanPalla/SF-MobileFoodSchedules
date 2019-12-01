@@ -11,7 +11,7 @@ using MobileFoodSchedules.Models;
 
 namespace MobileFoodSchedules.Controller
 {
-    [Route("api/FoodSurvey")]
+    [Route("api/FoodSurvey/[controller]")]
     [ApiController]
     public class FoodSurveysController : ControllerBase
     {
