@@ -1,0 +1,67 @@
+﻿@page
+@model MobileFoodSchedules.Pages.FoodSurveys.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Please fill the Food Survey!!</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FoodSurvey.firstName" class="control-label"></label>
+                <input asp-for="FoodSurvey.firstName" class="form-control" />
+                <span asp-validation-for="FoodSurvey.firstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FoodSurvey.lastName" class="control-label"></label>
+                <input asp-for="FoodSurvey.lastName" class="form-control" />
+                <span asp-validation-for="FoodSurvey.lastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FoodSurvey.mobile" class="control-label"></label>
+                <input asp-for="FoodSurvey.mobile" class="form-control" />
+                <span asp-validation-for="FoodSurvey.mobile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FoodSurvey.email" class="control-label"></label>
+                <input asp-for="FoodSurvey.email" class="form-control" />
+                <span asp-validation-for="FoodSurvey.email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FoodSurvey.age" class="control-label"></label>
+                <input asp-for="FoodSurvey.age" class="form-control" />
+                <span asp-validation-for="FoodSurvey.age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FoodSurvey.favouriteDish" class="control-label"></label>
+                <input asp-for="FoodSurvey.favouriteDish" class="form-control" />
+                <span asp-validation-for="FoodSurvey.favouriteDish" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FoodSurvey.favouriteCuisine" class="control-label"></label>
+                <input asp-for="FoodSurvey.favouriteCuisine" class="form-control" />
+                <span asp-validation-for="FoodSurvey.favouriteCuisine" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FoodSurvey.homeCountry" class="control-label"></label>
+                <input asp-for="FoodSurvey.homeCountry" class="form-control" />
+                <span asp-validation-for="FoodSurvey.homeCountry" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-info" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
