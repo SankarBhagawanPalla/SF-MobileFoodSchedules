@@ -1,0 +1,39 @@
+﻿@page
+@model MobileFoodSchedules.Pages.CincinnatiAccidentsModel
+@{
+    ViewData["Title"] = "CincinnatiAccidents";
+    var cincinnatiAccidents = ViewData["cincinnatiAccidents"];
+}
+
+<h1>Cincinnati Accidents</h1>
+<h4 style="color:steelblue">Source of Data: Consumed fellow student's group service</h4>
+<table class="table table-striped table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>Neighbourhood</th>
+            <th>Location</th>
+            <th>Accident Date</th>
+            <th>Accident type</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var accident in ViewBag.cincinnatiAccidents)
+        {
+            <tr>
+                <td>@accident.Neighborhood</td>
+                <td>@accident.Address</td>
+                <td>@accident.AccidentDate</td>
+                @if (accident.AccidentType == "traffic")
+                {
+                    <td><span class="badge badge-success">Traffic</span></td>
+                }
+                else
+                {
+                    <td><span class="badge badge-danger">Fire</span></td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+

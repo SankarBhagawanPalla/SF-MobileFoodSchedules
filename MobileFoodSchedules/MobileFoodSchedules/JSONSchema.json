@@ -1,0 +1,80 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/ScheduleElement"
+    },
+  "definitions": {
+    "ScheduleElement": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dayofweekstr": {
+          "$ref": "#/definitions/Dayofweekstr"
+        },
+        "starttime": {
+          "$ref": "#/definitions/Time"
+        },
+        "endtime": {
+          "$ref": "#/definitions/Time"
+        },
+        "applicant": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "applicant",
+        "dayofweekstr",
+        "endtime",
+        "location",
+        "starttime"
+      ],
+      "title": "WelcomeElement"
+    },
+    "Dayofweekstr": {
+      "type": "string",
+      "enum": [
+        "Tuesday",
+        "Monday",
+        "Friday",
+        "Wednesday",
+        "Thursday",
+        "Sunday",
+        "Saturday"
+      ],
+      "title": "Dayofweekstr"
+    },
+    "Time": {
+      "type": "string",
+      "enum": [
+        "The10Am",
+        "The7Am",
+        "The6Am",
+        "The9Am",
+        "The11Am",
+        "The12Pm",
+        "The8Am",
+        "The9Pm",
+        "The12Am",
+        "The6Pm",
+        "The1Pm",
+        "The4Am",
+        "The5Am",
+        "The2Pm",
+        "The4Pm",
+        "The3Pm",
+        "The8Pm",
+        "The11Pm",
+        "The5Pm",
+        "The3Am",
+        "The7Pm",
+        "The10Pm",
+        "The1Am"
+      ],
+      "title": "Time"
+    }
+  }
+}
