@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using MobileFoodSchedules.Models;
 
 namespace MobileFoodSchedules
 {
@@ -28,10 +30,13 @@ namespace MobileFoodSchedules
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Food Survey API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "San Francisco Approved Food Schedules API", Version = "v1" });
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddDbContext<MobileFoodSchedulesContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("MobileFoodSchedulesContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
