@@ -4,9 +4,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
-using MobileFoodSchedules.Models;
-using Swashbuckle.AspNetCore.Swagger;
 
 namespace MobileFoodSchedules
 {
@@ -31,13 +28,10 @@ namespace MobileFoodSchedules
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "Food Survey API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Food Survey API", Version = "v1" });
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
-
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,8 +51,8 @@ namespace MobileFoodSchedules
             app.UseMvc();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("./swagger/v1/swagger.json", "My API V1");
-                c.RoutePrefix = string.Empty;
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Food Survey API V1");
+                //c.RoutePrefix = string.Empty;
             });
             app.UseStaticFiles();
             app.UseCookiePolicy();
