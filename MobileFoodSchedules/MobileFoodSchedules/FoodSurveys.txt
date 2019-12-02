@@ -9,3 +9,4 @@ Dikshitha,B,5138074909,shankarpalla1@gmail.com,23,Biryani,Indian,India
 Raghu,P,513498098,raghav@gmail.com,23,Biryani,Inidan,India
 Praneeth,S,5138074909,shankarpalla1@gmail.com,89,Biryani,Indian,India
 Praneeth,S,5138074909,shankarpalla1@gmail.com,23,Noodles,Indian,India
+Rinisha,knsd,kjsdvn,;kjsvdn,23,j;kndsvj,;kjsdv,ks;jv
