@@ -18,7 +18,7 @@ namespace MobileFoodSchedules.Pages
             {
 
 
-                string cincinnatiAccidentsString = webClient.DownloadString("https://cincinnatiaccidents.azurewebsites.net/api/neighbourhoods/downtown");
+                string cincinnatiAccidentsString = webClient.DownloadString("https://cincinnatiaccidents.azurewebsites.net/api/accidents/downtown");
                 cincinnatiAccidents = CincinnatiAccident.FromJson(cincinnatiAccidentsString);
                 ViewData["cincinnatiAccidents"] = cincinnatiAccidents;
 

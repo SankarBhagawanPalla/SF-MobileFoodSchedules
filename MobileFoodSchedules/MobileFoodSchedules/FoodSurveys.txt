@@ -10,3 +10,6 @@ Raghu,P,513498098,raghav@gmail.com,23,Biryani,Inidan,India
 Praneeth,S,5138074909,shankarpalla1@gmail.com,89,Biryani,Indian,India
 Praneeth,S,5138074909,shankarpalla1@gmail.com,23,Noodles,Indian,India
 Rinisha,knsd,kjsdvn,;kjsvdn,23,j;kndsvj,;kjsdv,ks;jv
+Praneeth,Kajjam,5138074909,shankarpalla1@gmail.com,23,Biryani,Indian,India
+Praneeth,Kajjam,5138074909,shankarpalla1@gmail.com,54,kndsvj,Indian,India
+Praneeth,Palla,5138074909,shankarpalla1@gmail.com,22,Biryani,Indian,India
